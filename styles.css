@@ -1,21 +1,93 @@
 html {
-    font-family: sans-serif;
-  }
-  
-  body {
-    margin: 0;
-    text-align: center;
-    background-color: #322e2d;
-    color: #f6f0ee;
-  }
-  
-  #logo {
-    width: 7rem;
-    height: 7rem;
-    object-fit: contain;
-    margin-top: 2rem;
-  }
-  
-  h1 {
-    color: #e8d4b2;
-  }
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  background-color: #322e2d;
+  color: #f6f0ee;
+}
+
+#logo {
+  width: 7rem;
+  height: 7rem;
+  object-fit: contain;
+  margin-top: 2rem;
+}
+
+h1 {
+  color: #e8d4b2;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: #3a3635;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  margin: 1rem;
+  width: 300px;
+  text-align: left;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Overlay oscuro para mejorar la legibilidad */
+  z-index: 1;
+}
+
+.card h2,
+.card p,
+.card a {
+  position: relative;
+  z-index: 2;
+}
+
+.card h2 {
+  color: #e8d4b2;
+  margin-top: 0;
+}
+
+.card p {
+  color: #f6f0ee;
+}
+
+.card a {
+  color: #e8d4b2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* Fondos temáticos para cada card */
+.card-git {
+  background-image: url('https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png');
+}
+
+.card-github {
+  background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
+}
+
+.card-github-actions {
+  background-image: url('https://github.com/features/actions/social.png');
+}
