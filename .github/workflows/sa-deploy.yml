@@ -21,6 +21,7 @@ jobs:
           npm ci
           npm run test
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
