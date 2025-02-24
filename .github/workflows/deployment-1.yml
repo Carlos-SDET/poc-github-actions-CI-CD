@@ -1,0 +1,53 @@
+name: Lin, Test and Deplooy
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          cd second-action
+          npm ci
+      - name: Lint
+        run: |
+          cd second-action
+          npm run lint
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          cd second-action
+          npm ci
+          npm run test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          cd second-action
+          npm ci
+      - name: Build project
+        run: |
+          cd second-action
+          npm run build
+      - name: Deploy
+        run: |
+          cd second-action
+          echo "Deploying..."
