@@ -1,8 +1,6 @@
 name: Deploy Website
 
-on:
-  push:
-    branches: ["section-4"]
+on: workflow_dispatch
 
 jobs:
   test:
@@ -18,15 +16,15 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: |
-          cd section-4
+          cd 04-job-artifacts-events-cache
           npm ci
       - name: Lint code
         run: |
-          cd section-4
+          cd 04-job-artifacts-events-cache
           npm run lint
       - name: Test code
         run: |
-          cd section-4
+          cd 04-job-artifacts-events-cache
           npm test
 
   build:
@@ -45,16 +43,16 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: |
-          cd section-4
+          cd 04-job-artifacts-events-cache
           npm ci
       - name: Build website
         run: |
-          cd section-4
+          cd 04-job-artifacts-events-cache
           npm run build
       - name: Publish Js fileName
         id: publish
         run: |
-          cd section-4
+          cd 04-job-artifacts-events-cache
           echo "Publishing js files"
           find dist/assets/*.js -type f -execdir echo '::set-output name=jsFiles::{}' ';'
       - name: Archive website
