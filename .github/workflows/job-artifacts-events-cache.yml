@@ -40,10 +40,10 @@ jobs:
           cd section-4
           npm run build
       - name: Publish Js fileName
+        id: publish
         run: |
           cd section-4
           echo "Publishing js files"
-          id: publish
           find dist/assets/*.js -type f -execdir echo '::set-output name=jsFiles::{}' ';'
       - name: Archive website
         uses: actions/upload-artifact@v4
