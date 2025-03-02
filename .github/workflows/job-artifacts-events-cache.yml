@@ -1,8 +1,8 @@
-name: Deploy website
+name: Deploy Website
 
 on:
   push:
-    branches: -section-4
+    branches: ["section-4"]
 
 jobs:
   test:
