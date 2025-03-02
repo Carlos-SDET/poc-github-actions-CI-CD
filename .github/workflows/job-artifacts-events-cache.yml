@@ -1,0 +1,51 @@
+name: Deploy website
+
+on:
+  push:
+    branches: -section-4
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: |
+          cd section-4
+          npm ci
+      - name: Lint code
+        run: |
+          cd section-4
+          npm run lint
+      - name: Test code
+        run: |
+          cd section-4
+          npm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: |
+          cd section-4
+          npm ci
+      - name: Build website
+        run: |
+          cd section-4
+          npm run build
+      - name: Archive website
+        uses: actions/upload-artifact@v4
+        with:
+          name: website
+          path: section-4/dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy
+        run: echo "Deploying website"
