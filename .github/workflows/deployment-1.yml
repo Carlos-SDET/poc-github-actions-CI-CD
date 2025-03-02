@@ -1,4 +1,4 @@
-name: Lin, Test and Deplooy
+name: Lin, Test and Deploy
 
 on:
   push:
