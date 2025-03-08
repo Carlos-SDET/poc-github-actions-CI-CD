@@ -2,7 +2,7 @@ name: environment-secrets
 
 on:
   push:
-    branches: ["main", "dev", "section-4"]
+    branches: ["dev", "stg", "main"]
 
 env:
   MONGODB_DB_NAME: "mongo-database"
@@ -11,7 +11,7 @@ jobs:
   test:
     environment: staging
     env:
-      MONGODB_CLUSTER_ADDRESS: cluster0.d5xgm.mongodb.net
+      MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       PORT: 8080
