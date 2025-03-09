@@ -2,7 +2,7 @@ name: environment-secrets
 
 on:
   push:
-    branches: ["main", "dev", "section-4"]
+    branches: ["dev", "stg"]
 
 env:
   MONGODB_DB_NAME: "mongo-database"
